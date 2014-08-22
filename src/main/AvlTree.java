@@ -166,7 +166,7 @@ public class AvlTree <T extends Comparable> {
 		{
 			pull = poll(n.getRight());
 		}
-		return pull;
+		return balance(pull);
 	}
 	
 	public int Size()

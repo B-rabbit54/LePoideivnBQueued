@@ -16,8 +16,8 @@ public class AvlBasedPriorityQueue implements Queue {
 		root = avlTree.insert(data, root);
 		return true;
 	}
-
-	public Comparable pull()
+	@Override
+	public Comparable poll()
 	{
 		AvlNode pull = null;
 		if(root == null)
@@ -41,27 +41,27 @@ public class AvlBasedPriorityQueue implements Queue {
 			
 			
 		}
-		avlTree.inorderBalance(root);
+		//avlTree.inorderBalance(root);
 		return pull.getData();
 	}
 	
-	@Override
-	public Comparable poll() {
-		if(root == null)
-		{
-			return null;
-		}
-		else if(root.isLeaf())
-		{
-			return root.getData();
-		}
-		AvlNode n = avlTree.poll(root);
-		if(n == null)
-		{
-			return null;
-		}
-		return n.getData();
-	}
+//	@Override
+//	public Comparable poll() {
+//		if(root == null)
+//		{
+//			return null;
+//		}
+//		else if(root.isLeaf())
+//		{
+//			return root.getData();
+//		}
+//		AvlNode n = avlTree.poll(root);
+//		if(n == null)
+//		{
+//			return null;
+//		}
+//		return n.getData();
+//	}
 	
 	public int Size()
 	{

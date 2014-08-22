@@ -72,7 +72,7 @@ public class QueuedTest {
 		
 		for(int i = 0; i < 100; i++)
 		{
-			System.out.println(q.pull());
+			System.out.println(q.poll());
 		}
 
 	}
