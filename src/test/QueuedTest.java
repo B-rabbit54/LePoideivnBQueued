@@ -20,26 +20,26 @@ public class QueuedTest {
 //	}
 	
 	
-	@Test
-	public void HeapPriorityQueueTest()
-	{
-		HeapBasedPriorityQueue q = new HeapBasedPriorityQueue(200);
-		Random rand = new Random();
-		for(int i = 0; i < 100; i++)
-		{
-			int random = rand.nextInt(100);
-			Value v = new Value(random);
-			q.offer(v);
-		}
-		System.out.println("Heap poll");
-		for ( int i = 0; i < 102; i++ ) {
-			System.out.println(q.poll());
-		}
-		System.out.println("heap poll end");
-		//q.print();
-		//System.out.println(q.poll().toString());		
-		//System.out.println(q.poll());
-	}
+//	@Test
+//	public void HeapPriorityQueueTest()
+//	{
+//		HeapBasedPriorityQueue q = new HeapBasedPriorityQueue(200);
+//		Random rand = new Random();
+//		for(int i = 0; i < 100; i++)
+//		{
+//			int random = rand.nextInt(100);
+//			Value v = new Value(random);
+//			q.offer(v);
+//		}
+//		System.out.println("Heap poll");
+//		for ( int i = 0; i < 102; i++ ) {
+//			System.out.println(q.poll());
+//		}
+//		System.out.println("heap poll end");
+//		//q.print();
+//		//System.out.println(q.poll().toString());		
+//		//System.out.println(q.poll());
+//	}
 //	
 //	@Test public void AvlPeekTest()
 //	{
@@ -61,18 +61,20 @@ public class QueuedTest {
 	{
 		AvlBasedPriorityQueue q = new AvlBasedPriorityQueue();
 		Random rand = new Random();
-		for(int i = 0; i < 100; i++)
+		for(int i = 0; i < 500; i++)
 		{
 			int random = rand.nextInt(100);
 			Value v = new Value(random);
 			q.offer(v);
 		}
+		System.out.println("Initial Balance: " + q.rootBalanceFactor());
 		q.toString();
 		System.out.println("Poll Test");
 		
-		for(int i = 0; i < 100; i++)
+		for(int i = 0; i < 20; i++)
 		{
 			System.out.println(q.poll());
+			System.out.println(q.rootBalanceFactor());
 		}
 
 	}

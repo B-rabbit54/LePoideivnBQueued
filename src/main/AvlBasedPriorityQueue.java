@@ -34,6 +34,7 @@ public class AvlBasedPriorityQueue implements Queue {
 			AvlNode left = root.getLeft();
 			pull = root;
 			root = left;
+			//root = avlTree.b
 		}
 		else if(root.getRight() != null)
 		{
@@ -41,9 +42,14 @@ public class AvlBasedPriorityQueue implements Queue {
 			
 			
 		}
-		//avlTree.inorderBalance(root);
+		//root = avlTree.inorderBalance(root);
 		return pull.getData();
 	}
+	
+public int rootBalanceFactor()
+{
+	return avlTree.balanceFactor(root);
+}
 	
 //	@Override
 //	public Comparable poll() {

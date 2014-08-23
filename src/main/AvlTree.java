@@ -72,7 +72,7 @@ public class AvlTree <T extends Comparable> {
 				}
 			}
 			
-		}
+		}	
 		else if(data.compareTo(n.getData()) > 0)
 		{
 			n.setRight(insert(data, n.getRight()));
@@ -88,15 +88,16 @@ public class AvlTree <T extends Comparable> {
 					n = doubleRightRotate(n);
 				}
 			}
-		}
-		
-		
+		}	
 		n.setHeight(GetMaxHeight(height(n.getLeft()), height(n.getRight())) + 1);
 		size++;
 		return n;
 		
 	}
-	
+	public int balanceFactor(AvlNode n)
+		{
+			return height(n.getRight()) - height(n.getLeft());
+		}
 	public AvlNode peek(AvlNode n)
 	{
 		AvlNode peek = null;
@@ -138,6 +139,7 @@ public class AvlTree <T extends Comparable> {
 	
 	public AvlNode poll(AvlNode n)
 	{
+		//n = balance(n);
 		AvlNode pull = null;
 		
 		if(n.getRight() == null)
@@ -220,14 +222,15 @@ public class AvlTree <T extends Comparable> {
 		}
 	}
 	
-	public void inorderBalance(AvlNode n)
+	public AvlNode inorderBalance(AvlNode n)
 	{
 		if (n != null)
         {
             inorderBalance(n.getLeft());
-            balance(n);
+            n = balance(n);
             inorderBalance(n.getRight());
         }
+		return n;
 	}
     public void inorder(AvlNode n)
     {
@@ -243,19 +246,19 @@ public class AvlTree <T extends Comparable> {
 		if(n == null)
 			return n;
 		
-		if(height(n.getLeft()) - height(n.getRight()) > 2)
+		if(height(n.getLeft()) - height(n.getRight()) >= 2)
 			if(height(n.getLeft().getLeft()) >= height(n.getLeft().getRight()))
 				n = rotateLeft(n);
 			else
 				n = doubleLeftRotate(n);
 		else
-			if(height(n.getRight()) - height(n.getLeft()) > 2)
+			if(height(n.getRight()) - height(n.getLeft()) >= 2)
 				if(height(n.getRight().getRight()) >= height(n.getRight().getLeft()))
 					n = rotateRight(n);
 				else
 					n = doubleRightRotate(n);
 
-		n.setHeight(GetMaxHeight(height(n.getLeft()), height(n.getRight())) + 1); 		
+		n.setHeight(GetMaxHeight(height(n.getLeft()), height(n.getRight()))+ 1); 		
 		return n;
 	}
 
